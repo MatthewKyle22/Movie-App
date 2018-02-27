@@ -10,22 +10,27 @@ class App extends Component {
     this.state = { movies: [] };
   }
 
+  // get from local storage
   componentWillMount() {
-    const movieList = ["jack+reacher", "toy+story", "avatar"];
+    let state = JSON.parse(localStorage.getItem("state"));
+    let movieList = _.map(state.movies, "title");
     getMovies(movieList, movie => this.addMovie(movie));
   }
-
+  // save to local
   addMovie(movie) {
     let state = this.state;
     state.movies.push(movie);
     this.setState(state);
+    localStorage.setItem("state", JSON.stringify(state));
   }
 
+  // save to local after update
   removeMovie(movie) {
     let state = this.state;
     let index = _.findIndex(state.movies, movie);
     state.movies.splice(index, 1);
     this.setState(state);
+    localStorage.setItem("state", JSON.stringify(state));
   }
 
   runSearch(movieTitle) {
