@@ -21,12 +21,18 @@ class App extends Component {
     this.setState(state);
   }
 
+  removeMovie(movie) {
+    let state = this.state;
+    let index = _.findIndex(state.movies, movie);
+    state.movies.splice(index, 1);
+    this.setState(state);
+  }
+
   runSearch(movieTitle) {
     getMovies([movieTitle], movie => this.addMovie(movie));
   }
 
   render() {
-    // console.log(this.state.movies)
     return (
       <div className="App">
         <div className="App-searchBox">
@@ -52,7 +58,12 @@ class App extends Component {
               <img src={movie.poster} width="150" height="250" />
               <h2>{movie.title}</h2>
               <p>{movie.description} </p>
-              <button className="App-delete">Delete</button>
+              <button
+                className="App-delete"
+                onClick={() => this.removeMovie(movie)}
+              >
+                Delete
+              </button>
             </div>
           );
         })}

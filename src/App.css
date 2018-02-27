@@ -55,4 +55,11 @@
   text-align: center;
 }
 
-/* adding */
+.App-delete {
+  float: right;
+  padding: 4px;
+  color: white;
+  background-color: #ff3530;
+  border: none;
+  border-radius: 2px;
+}
