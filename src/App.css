@@ -42,3 +42,14 @@
   border: none;
   border-radius: 2px;
 }
+
+.App-error p {
+  color: red;
+  font-weight: bold;
+  background-color: white;
+  width: 50%;
+  margin: 0 auto;
+  margin-bottom: 2%;
+  padding: 1%;
+  border-radius: 10px;
+}

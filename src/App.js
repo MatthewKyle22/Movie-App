@@ -7,7 +7,10 @@ import { image } from "superagent/lib/node/parsers";
 class App extends Component {
   constructor() {
     super();
-    this.state = { movies: [] };
+    this.state = {
+      movies: []
+      // isHidden: !this.state.isHidden
+    };
   }
 
   componentWillMount() {
@@ -15,6 +18,7 @@ class App extends Component {
     let movieList = _.map(state.movies, "title");
     getMovies(movieList, movie => this.addMovie(movie));
   }
+
   persists(state) {
     this.setState(state);
     localStorage.setItem("state", JSON.stringify(state));
@@ -37,11 +41,20 @@ class App extends Component {
     getMovies([movieTitle], movie => this.addMovie(movie));
   }
 
+  // toggleHidden(prop) {
+  //   if (prop === true) {
+  //     this.setState({
+  //       isHidden: !this.state.isHidden
+  //     });
+  //   }
+  // }
+
   render() {
     return (
       <div className="App">
         <div className="App-searchBox">
           <h1>Movie Search</h1>
+          {/* {!this.state.isHidden && <InvalidMovie />} */}
           <input
             className="App-input"
             type="text"
@@ -56,7 +69,6 @@ class App extends Component {
             Search
           </button>
         </div>
-
         {_.orderBy(this.state.movies, "title", "asc").map(movie => {
           return (
             <div className="App-movies" key={movie.title}>
@@ -76,5 +88,16 @@ class App extends Component {
     );
   }
 }
+
+/* Add this when movie is not found */
+
+// const InvalidMovie = () => (
+//   <div className="App-error">
+//     <p>
+//       The Movie Title You Have Entered Is Not Valid.
+//       <br /> Please Enter A Valid Movie Title
+//     </p>
+//   </div>
+// );
 
 export default App;
