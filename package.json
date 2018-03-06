@@ -7,12 +7,17 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts": "1.1.1",
+    "styled-components": "^3.2.0",
     "superagent": "^3.8.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "styleguide": "styleguidist server"
+  },
+  "devDependencies": {
+    "react-styleguidist": "^6.2.6"
   }
 }
