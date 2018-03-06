@@ -141,7 +141,7 @@ class App extends Component {
   }
 }
 
-/* Add this when movie is not found */
+/* Add this when movie is not found in search*/
 
 // const InvalidMovie = () => (
 //   <TryAgain>
